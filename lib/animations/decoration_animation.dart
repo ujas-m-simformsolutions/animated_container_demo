@@ -13,6 +13,7 @@ class _DecorationAnimationState extends State<DecorationAnimation> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Decoration Animation'),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Center(
         child: Column(
@@ -35,16 +36,21 @@ class _DecorationAnimationState extends State<DecorationAnimation> {
               curve: Curves.easeIn,
             ),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  animate = !animate;
-                });
-              },
+              onPressed: _animated,
               child: Text('Animate'),
+              style: ElevatedButton.styleFrom(
+                primary: Theme.of(context).colorScheme.secondary,
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _animated() {
+    setState(() {
+      animate = !animate;
+    });
   }
 }

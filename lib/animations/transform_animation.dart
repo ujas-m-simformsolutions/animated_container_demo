@@ -16,6 +16,7 @@ class _TransformAnimationState extends State<TransformAnimation> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Transform Animation'),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Center(
         child: Column(
@@ -24,37 +25,58 @@ class _TransformAnimationState extends State<TransformAnimation> {
             AnimatedContainer(
               height: 150,
               width: 150,
-              child: FlutterLogo(),
+              child: Image.asset(
+                'assets/logo.png',
+                scale: 0.6,
+              ),
               duration: Duration(seconds: 1),
               transform: Matrix4(
-                1,0,0,0,
-                0,1,0,0,
-                0,0,1,0,
-                0,0,0,1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
               )
                 ..rotateX(x)
                 ..rotateY(y)
                 ..rotateZ(z),
             ),
             ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    animate = !animate;
-                    if(animate){
-                      x = 2;
-                      y = 2;
-                      z = 2;
-                    }else{
-                      x = 0;
-                      y = 0;
-                      z = 0;
-                    }
-                  });
-                },
-                child: Text('Animate'))
+              onPressed: _animate,
+              child: Text('Animate'),
+              style: ElevatedButton.styleFrom(
+                primary: Theme.of(context).colorScheme.secondary,
+              ),
+            )
           ],
         ),
       ),
     );
+  }
+
+  void _animate() {
+    setState(() {
+      animate = !animate;
+      if (animate) {
+        x = 2;
+        y = 2;
+        z = 2;
+      } else {
+        x = 0;
+        y = 0;
+        z = 0;
+      }
+    });
   }
 }

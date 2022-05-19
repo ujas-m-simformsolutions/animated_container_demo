@@ -13,6 +13,7 @@ class _AlignAnimationState extends State<AlignAnimation> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Align Animation'),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Center(
         child: Column(
@@ -23,28 +24,24 @@ class _AlignAnimationState extends State<AlignAnimation> {
               width: 250,
               height: 250,
               alignment: animate ? Alignment.centerLeft : Alignment.centerRight,
-              color: Colors.red,
               curve: Curves.easeInOut,
-              child: Text(
-                'animate',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Image.asset('assets/logo.png'),
             ),
             ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  animate = !animate;
-                });
-              },
+              onPressed: _animated,
               child: Text('Animate'),
+              style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).colorScheme.secondary),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _animated() {
+    setState(() {
+      animate = !animate;
+    });
   }
 }

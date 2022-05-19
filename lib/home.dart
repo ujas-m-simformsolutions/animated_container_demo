@@ -11,59 +11,46 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Animated Container Demo'),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => SizeAnimation(),
-                    ),
-                  );
-                },
+                onPressed: () => _navigate(context, SizeAnimation()),
+                style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.secondary),
                 child: Text('Size Animation')),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => AlignAnimation(),
-                    ),
-                  );
-                },
+                onPressed: () => _navigate(context, AlignAnimation()),
+                style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.secondary),
                 child: Text('Align Animation')),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => DecorationAnimation(),
-                    ),
-                  );
-                },
+                onPressed: () => _navigate(context, DecorationAnimation()),
+                style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.secondary),
                 child: Text('Decoration Animation')),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => MarginAnimation(),
-                    ),
-                  );
-                },
-                child: Text('Padding Animation')),
+                onPressed: () => _navigate(context, MarginAnimation()),
+                style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.secondary),
+                child: Text('Margin Animation')),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => TransformAnimation(),
-                    ),
-                  );
-                },
+                onPressed: () => _navigate(context, TransformAnimation()),
+                style: ElevatedButton.styleFrom(
+                    primary: Theme.of(context).colorScheme.secondary),
                 child: Text('Transform Animation')),
           ],
         ),
       ),
+    );
+  }
+
+  void _navigate(BuildContext context, Widget screen) {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => screen),
     );
   }
 }
